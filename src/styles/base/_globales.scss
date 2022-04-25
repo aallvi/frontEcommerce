@@ -1,0 +1,68 @@
+@use 'variables' as v;
+
+html, body, p, label{
+
+   font-family: v.$fuentePrincipal;
+}
+
+.contenedor {
+   width: 95%;
+   max-width: 1200px;
+   margin: 0 auto;
+}
+
+a {
+   text-decoration: none;
+}
+
+img {
+
+   display: block;
+}
+
+
+html {
+   font-size: 62.5%;
+   box-sizing: border-box;
+}
+
+
+*, *:before, *:after {
+   box-sizing: inherit;
+}
+
+.titulo{
+   // background-color: red;
+   text-align: center;
+   padding: 0;
+   font-size: 2rem;
+   margin-top: 3.5rem;
+   // margin-bottom: rem;
+   // width: 90rem;
+
+   p{
+      margin: 0;
+      text-align: center;
+   font-size: 2rem;
+
+   }
+}
+
+.swal2-popup {
+   font-size: 1.6rem !important;
+   font-family: v.$fuentePrincipal
+ }
+
+ ::-webkit-scrollbar {
+   width: 0.5rem;               /* width of the entire scrollbar */
+ }
+ 
+ ::-webkit-scrollbar-track {
+   background:rgb(197, 196, 196);        /* color of the tracking area */
+ }
+ 
+ ::-webkit-scrollbar-thumb {
+   background-color: rgba(88, 84, 84, 0.678)   /* color of the scroll thumb */
+   // border-radius: 20px;       /* roundness of the scroll thumb */
+   // border: 3px solid v.$hover;  /* creates padding around scroll thumb */
+ }

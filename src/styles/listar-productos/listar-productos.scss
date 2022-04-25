@@ -1,0 +1,21 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+
+
+.camposListarProducto{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    // gap: 2rem;
+    width: 35rem;
+
+    input{
+        height: 2.5rem;
+        width: 50%;
+    }
+
+    p{
+        width: 50%;
+    }
+}

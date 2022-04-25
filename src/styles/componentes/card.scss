@@ -1,0 +1,13 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+
+
+.card{
+    border: 1px solid black;
+    width: fit-content;
+    margin-bottom: 2rem;
+    display: flex;
+    border-radius: 1rem;
+    overflow: hidden;
+}
