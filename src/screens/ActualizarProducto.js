@@ -6,6 +6,8 @@ export const ActualizarProducto = () => {
 
   let params = useParams();
 
+  console.log('params',params.id)
+
   const [producto, setProducto] = useState({
         nombre: '',
         descripcion: '',
@@ -20,11 +22,11 @@ export const ActualizarProducto = () => {
 
         const consultarDatos = async() =>{
 
-          const response = await fetch(`https://primerapreentrega.herokuapp.com/api/productos/${params.id}`,{method: 'GET'})
+          const response = await fetch(`http://localhost:8080/api/productos/${params.id}`,{method: 'GET'})
           const data = await response.json()
 
-          // console.log(data)
-          setProducto(data)
+          console.log('producto a actualizar',data)
+          setProducto(data === Array ? data[0] : data)
 
       }
 
@@ -34,8 +36,8 @@ export const ActualizarProducto = () => {
 
 
       const actualizarProducto = async() => {
-
-        const response = await fetch(`https://primerapreentrega.herokuapp.com/api/productos/${params.id}`,{method: 'PUT', headers: { 'Content-Type': 'application/json' } ,body:JSON.stringify({nombre,descripcion,codigo,foto,precio,stock})})
+                console.log('yapo')
+        const response = await fetch(`http://localhost:8080/api/productos/${params.id}`,{method: 'PUT', headers: { 'Content-Type': 'application/json' } ,body:JSON.stringify({nombre,descripcion,codigo,foto,precio,stock})})
           const data = await response.json()
 
             console.log('actualizacion',data)

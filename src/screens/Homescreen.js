@@ -5,9 +5,11 @@ export const Homescreen = () => {
 
     const [productos, setProductos] = useState([])
 
+    console.log(productos)
+
     const consultarDatos = async() =>{
 
-        const response = await fetch('https://primerapreentrega.herokuapp.com/api/productos',{method: 'GET'})
+        const response = await fetch('http://localhost:8080/api/productos',{method: 'GET'})
         const data = await response.json()
   
         // console.log(data)
@@ -21,18 +23,19 @@ export const Homescreen = () => {
     
      }, [])
      
-     console.log('productos',productos)
+     
  
      const eliminar = async (id) => {
 
    
 
-      const response = await fetch(`https://primerapreentrega.herokuapp.com/api/productos/${id}`,{method: 'DELETE'})
+      const response = await fetch(`http://localhost:8080/api/productos/${id}`,{method: 'DELETE'})
       const data = await response.json()
 
-      console.log(data)
+      console.log('data',data)
      
       consultarDatos()
+      console.log('products',productos)
 
   
 
@@ -40,6 +43,7 @@ export const Homescreen = () => {
     // console.log(id)
 
   }
+
 
 
   return (
@@ -54,7 +58,7 @@ export const Homescreen = () => {
           <div className='ContendorProductos' >
           {
              productos.map(item => (
-                 <Card key={item.id} {...item} eliminar={eliminar} />
+                 <Card key={item._id} {...item} eliminar={eliminar} />
              ))
          }
           
