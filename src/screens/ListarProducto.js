@@ -16,7 +16,7 @@ export const ListarProducto = () => {
 
     const agregarProducto = async () => {
 
-        const response = await fetch('http://localhost:8080/api/productos',{
+        const response = await fetch('https://desafiocoder1234.herokuapp.com/api/productos',{
             method: 'POST',headers: { 'Content-Type': 'application/json' } ,body:JSON.stringify({nombre,descripcion,codigo,foto,precio,stock})
                    
         })
