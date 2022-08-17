@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { base } from '../urlApi'
 
 export const Register = () => {
 
@@ -22,7 +23,7 @@ export const Register = () => {
 
     try {
 
-        const response = await axios.post('https://desafiocoder1234.herokuapp.com/register',{
+        const response = await axios.post(`${base}/register`,{
             username:user.usuario,
             password:user.clave,
             nombre:user.nombre,

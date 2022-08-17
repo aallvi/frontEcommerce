@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { base } from '../urlApi'
 
 export const Carrito = () => {
 
@@ -17,7 +18,7 @@ export const Carrito = () => {
 
     try {
 
-      const response = await axios.post('https://desafiocoder1234.herokuapp.com/finalizar', {
+      const response = await axios.post(`${base}/finalizar`, {
         carrito:carrito,nombre:'alvaro', email:'aleiva97@gmail.com', telefono:datos.telefono
       })
 
@@ -41,7 +42,7 @@ export const Carrito = () => {
 
       try {
 
-        const response = await axios.get(`https://desafiocoder1234.herokuapp.com/home/${email}`)
+        const response = await axios.get(`${base}/home/${email}`)
     
         setDatos(response.data[0])
         console.log(response.data[0])

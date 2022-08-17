@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Routes, Route, useParams, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
+import { base } from '../urlApi';
 
 export const Perfil = () => {
 
@@ -25,7 +26,7 @@ export const Perfil = () => {
 
       try {
 
-        const response = await axios.get(`https://desafiocoder1234.herokuapp.com/home/${email}`)
+        const response = await axios.get(`${base}/home/${email}`)
     
         setDatos(response.data)
         console.log(response.data)
@@ -76,9 +77,9 @@ const subir = async () => {
 
           setfotoNew(file.selectedFile.name)
 
-          const response = await axios.post('https://desafiocoder1234.herokuapp.com/upload', data, {pick}
+          const response = await axios.post(`${base}/upload`, data, {pick}
           )
-          const responseMongo = await axios.post('https://desafiocoder1234.herokuapp.com/uploadMongo', {pick,email}
+          const responseMongo = await axios.post(`${base}/uploadMongo`, {pick,email}
           )
 
 
@@ -151,7 +152,7 @@ const subir = async () => {
       {
         datos[0] && 
         
-        <img src={`https://desafiocoder1234.herokuapp.com/static/${  datos[0].foto}`} width='300' height='300' />
+        <img src={`${base}/static/${  datos[0].foto}`} width='300' height='300' />
       }
 {/* 
        <p>nombre: {datos[0].nombre} </p>

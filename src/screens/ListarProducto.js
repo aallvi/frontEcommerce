@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { base } from '../urlApi'
 
 export const ListarProducto = () => {
 
@@ -16,7 +17,7 @@ export const ListarProducto = () => {
 
     const agregarProducto = async () => {
 
-        const response = await fetch('https://desafiocoder1234.herokuapp.com/api/productos',{
+        const response = await fetch(`${base}/api/productos`,{
             method: 'POST',headers: { 'Content-Type': 'application/json' } ,body:JSON.stringify({nombre,descripcion,codigo,foto,precio,stock})
                    
         })

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Card } from '../components/Card'
+import { base } from '../urlApi'
 
 export const Homescreen = () => {
 
@@ -16,7 +17,7 @@ export const Homescreen = () => {
 
     const consultarDatos = async() =>{
 
-        const response = await fetch('https://desafiocoder1234.herokuapp.com/api/productos',{method: 'GET'})
+        const response = await fetch(`${base}/api/productos`,{method: 'GET'})
         const data = await response.json()
   
         // console.log(data)
@@ -36,7 +37,7 @@ export const Homescreen = () => {
 
    
 
-      const response = await fetch(`https://desafiocoder1234.herokuapp.com/api/productos/${id}`,{method: 'DELETE'})
+      const response = await fetch(`${base}/api/productos/${id}`,{method: 'DELETE'})
       const data = await response.json()
 
       console.log('data',data)

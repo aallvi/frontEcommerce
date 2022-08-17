@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { base } from '../urlApi'
 
 export const Login = () => {
 
@@ -18,7 +19,7 @@ export const Login = () => {
 
     try {
 
-        const response = await axios.post('https://desafiocoder1234.herokuapp.com/login',{
+        const response = await axios.post(`${base}/login`,{
             username:user.usuario,
             password:user.clave,
             
@@ -46,7 +47,7 @@ export const Login = () => {
 
     try {
 
-        const response = await axios.get('https://desafiocoder1234.herokuapp.com/user',)
+        const response = await axios.get(`${base}/user`,)
     
         console.log(response.data)
     

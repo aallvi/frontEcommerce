@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate,useParams  } from 'react-router-dom'
+import { base } from '../urlApi';
 
 
 export const ActualizarProducto = () => {
@@ -22,7 +23,7 @@ export const ActualizarProducto = () => {
 
         const consultarDatos = async() =>{
 
-          const response = await fetch(`https://desafiocoder1234.herokuapp.com/api/productos/${params.id}`,{method: 'GET'})
+          const response = await fetch(`${base}/api/productos/${params.id}`,{method: 'GET'})
           const data = await response.json()
 
           console.log('producto a actualizar',data)
@@ -37,7 +38,7 @@ export const ActualizarProducto = () => {
 
       const actualizarProducto = async() => {
                 console.log('yapo')
-        const response = await fetch(`https://desafiocoder1234.herokuapp.com/api/productos/${params.id}`,{method: 'PUT', headers: { 'Content-Type': 'application/json' } ,body:JSON.stringify({nombre,descripcion,codigo,foto,precio,stock})})
+        const response = await fetch(`${base}/api/productos/${params.id}`,{method: 'PUT', headers: { 'Content-Type': 'application/json' } ,body:JSON.stringify({nombre,descripcion,codigo,foto,precio,stock})})
           const data = await response.json()
 
             console.log('actualizacion',data)
