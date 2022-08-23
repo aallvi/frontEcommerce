@@ -18,7 +18,7 @@ export const Carrito = () => {
 
     try {
 
-      const response = await axios.post(`${base}/finalizar`, {
+      const response = await axios.post(`${base}/api/carrito/finalizar`, {
         carrito:carrito,nombre:'alvaro', email:'aleiva97@gmail.com', telefono:datos.telefono
       })
 
@@ -42,7 +42,7 @@ export const Carrito = () => {
 
       try {
 
-        const response = await axios.get(`${base}/home/${email}`)
+        const response = await axios.get(`${base}/api/carrito/home/${email}`)
     
         setDatos(response.data[0])
         console.log(response.data[0])

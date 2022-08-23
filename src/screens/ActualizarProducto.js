@@ -18,7 +18,9 @@ export const ActualizarProducto = () => {
         stock: ''
     })
 
-    const {nombre,descripcion,codigo,foto,precio,stock} = producto
+    console.log('producto',producto)
+
+    const {nombre,descripcion,codigo,foto,precio,stock} =  producto
   
 
         const consultarDatos = async() =>{
@@ -27,7 +29,7 @@ export const ActualizarProducto = () => {
           const data = await response.json()
 
           console.log('producto a actualizar',data)
-          setProducto(data === Array ? data[0] : data)
+          setProducto(data[0] )
 
       }
 
@@ -51,6 +53,8 @@ export const ActualizarProducto = () => {
     <div>
 
       <p>Actualizar Producto</p>   
+
+      
         
         
         <div className='camposListarProducto' >

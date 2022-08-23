@@ -23,7 +23,7 @@ export const Register = () => {
 
     try {
 
-        const response = await axios.post(`${base}/register`,{
+        const response = await axios.post(`${base}/api/auth/register`,{
             username:user.usuario,
             password:user.clave,
             nombre:user.nombre,

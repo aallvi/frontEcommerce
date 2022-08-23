@@ -77,9 +77,9 @@ const subir = async () => {
 
           setfotoNew(file.selectedFile.name)
 
-          const response = await axios.post(`${base}/upload`, data, {pick}
+          const response = await axios.post(`${base}/api/fotos/upload`, data, {pick}
           )
-          const responseMongo = await axios.post(`${base}/uploadMongo`, {pick,email}
+          const responseMongo = await axios.post(`${base}/api/fotos/uploadMongo`, {pick,email}
           )
 
 

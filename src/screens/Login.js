@@ -19,7 +19,7 @@ export const Login = () => {
 
     try {
 
-        const response = await axios.post(`${base}/login`,{
+        const response = await axios.post(`${base}/api/auth/login`,{
             username:user.usuario,
             password:user.clave,
             
