@@ -36,11 +36,11 @@ export const Homescreen = () => {
      const eliminar = async (id) => {
 
    
+      console.log('id',id)
 
       const response = await fetch(`${base}/api/productos/${id}`,{method: 'DELETE'})
       const data = await response.json()
 
-      console.log('data',data)
      
       consultarDatos()
       console.log('products',productos)
