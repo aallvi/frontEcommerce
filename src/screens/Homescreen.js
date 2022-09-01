@@ -5,7 +5,7 @@ import { base } from '../urlApi'
 import io from 'socket.io-client'
 import moment from 'moment'
 import axios from 'axios'
-const socket = io('http://localhost:8083')
+const socket = io(base)
 
 export const Homescreen = () => {
 
@@ -41,7 +41,7 @@ export const Homescreen = () => {
          tipo: nombreChat === 'servidor' ? 'servidor' : 'usuario'
         }
 
-        const response = await axios.post('http://localhost:8083/api/mensajes', {
+        const response = await axios.post(`${base}/api/mensajes`, {
           data
         })
 

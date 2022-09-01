@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { base } from '../urlApi'
 
 
 export const MisMensajes = () => {
@@ -13,7 +14,7 @@ export const MisMensajes = () => {
 
         try {
              
-            const response = await axios.get(`http://localhost:8083/api/mensajes/${email}`)
+            const response = await axios.get(`${base}/api/mensajes/${email}`)
 
             setMensajes(response.data)
 
