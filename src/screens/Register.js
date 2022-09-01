@@ -7,6 +7,8 @@ export const Register = () => {
 
     const navigate = useNavigate()
 
+    const email = localStorage.getItem('email')
+
     const [user, setUser] = useState({
         usuario:'',
         clave:'',
@@ -54,10 +56,13 @@ export const Register = () => {
 
 
   return (
-    <div>
+    <div className='contenedor' >
 
+     {
+        !email ?
 
-    <p>Usuario</p>
+        <>
+        <p>Usuario</p>
     <input type='text' value={user.usuario} onChange={e => setUser({
         usuario:e.target.value,
         clave:user.clave
@@ -124,8 +129,16 @@ export const Register = () => {
     }) } />
 
 
-    <button onClick={register} >Entrar</button>
+    <button onClick={register} >Registrarse</button>
 
+        </> : <p>Ya estas Logeado</p>
+
+        
+
+     }
+
+
+    
 
 
 

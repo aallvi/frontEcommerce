@@ -2,18 +2,79 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Card } from '../components/Card'
 import { base } from '../urlApi'
+import io from 'socket.io-client'
+import moment from 'moment'
+import axios from 'axios'
+const socket = io('http://localhost:8083')
 
 export const Homescreen = () => {
 
-    const [productos, setProductos] = useState([])
+  socket.emit('conectado', 'as')
+
+  // const [carta, setCarta] = useState(JSON.parse(localStorage.getItem('carta')) || [])
+
+  const carta = useSelector(state => state.app.carrito)
 
 
-  const carrito = useSelector(state => state.app.carrito)
-
-  console.log('carrito',carrito)
+  console.log('carta',carta)
 
 
-    console.log(productos)
+  const [message, setMessage] = useState("")
+  const [mensajes, setMensajes] = useState([])
+
+  const email = localStorage.getItem('email')
+  
+  let nombreChat = email === 'alvarovale' ? 'servidor' : email !== 'alvarovale' ? email : `user ${Date.now()}`
+
+  console.log('mensajes',mensajes)
+
+  const sendMessage = async () => {
+    socket.emit("send_message", {message, nombre:nombreChat, fecha:moment().format('lll')})
+    setMensajes([...mensajes,{mensaje:message, nombre:nombreChat, fecha:moment().format('lll')}])
+
+    try {
+
+        const data={
+         email:email ? email : `user ${Date.now()}`,
+         mensaje:message,
+         fecha: moment().format('lll'),
+         tipo: nombreChat === 'servidor' ? 'servidor' : 'usuario'
+        }
+
+        const response = await axios.post('http://localhost:8083/api/mensajes', {
+          data
+        })
+
+        console.log(response.data)
+    
+      
+    } catch (error) {
+      console.log(error)
+    }
+
+
+
+  }
+
+
+
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+      setMensajes([...mensajes,{mensaje:data.message, nombre:data.nombre, fecha:data.fecha}])
+    })
+        return () => {socket.off()}
+  }, [mensajes])
+  
+
+
+
+
+  const [productos, setProductos] = useState([])
+
+
+
+
+    // console.log(productos)
 
     const consultarDatos = async() =>{
 
@@ -28,7 +89,6 @@ export const Homescreen = () => {
      useEffect(() => {
 
         consultarDatos()
-    
      }, [])
      
      
@@ -57,11 +117,11 @@ export const Homescreen = () => {
   return (
     <div className='hola' >
         
-        <h1>Digital Store</h1>
+        <h1 className='tituloDigital'>Pinar Store</h1>
 
       <div> 
 
-          <p> Productos </p>
+          {/* <h2> Productos </h2> */}
 
           <div className='ContendorProductos' >
           {
@@ -75,6 +135,22 @@ export const Homescreen = () => {
 
        
           
+      </div>
+
+
+      <div className='chatBox' >
+        <h1>Chat</h1>
+        <div className='inputContainer' >
+        <input onChange={(e) => setMessage(e.target.value) } />
+        <button onClick={sendMessage} >Send</button>
+
+        </div>
+
+
+        <h2>Mensajes</h2>
+        {mensajes.map((e,index) => 
+        <p className='mensajes' key={index} >{e.fecha} - {e.nombre} : {e.mensaje} </p>
+         )}
       </div>
 
 

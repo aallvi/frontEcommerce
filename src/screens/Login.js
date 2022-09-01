@@ -14,6 +14,8 @@ export const Login = () => {
     
   console.log(user)
 
+  const emailLogin = localStorage.getItem('email')
+
 
   const login = async() => {
 
@@ -63,10 +65,13 @@ export const Login = () => {
 
 
   return (
-    <div>
+    <div className='contenedor'>
 
+        {
+           !emailLogin ?
+           <>
 
-        <p>Usuario</p>
+     <p>Usuario</p>
         <input type='text' value={user.usuario} onChange={e => setUser({
             usuario:e.target.value,
             clave:user.clave
@@ -81,8 +86,16 @@ export const Login = () => {
 
 
         <button onClick={login} >Entrar</button>
-        <button onClick={getUser} >get</button>
+        {/* <button onClick={getUser} >get</button> */}
 
+           
+           
+           </>:
+           <p>Ya estas logeado</p>
+        }
+
+
+       
 
 
 

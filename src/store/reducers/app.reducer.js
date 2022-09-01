@@ -1,9 +1,9 @@
-import {  ARR, DATA_FILTRADA, LINK_PDF, PHOTO_LINK,AGREGAR  } from "../actions/app.actions";
+import {  ARR, DATA_FILTRADA, LINK_PDF, PHOTO_LINK,AGREGAR, RESTAURAR, FILTRAR  } from "../actions/app.actions";
 
 const initialState = {
     links: [],
     photo: 'a',
-    carrito:[]
+    carrito:JSON.parse(localStorage.getItem('carta')) || []
 
 }
 
@@ -20,6 +20,18 @@ const AppReducer = (state = initialState, action) => {
         return {
           ...state,
           carrito:[...state.carrito,action.payload]
+
+        }
+        case FILTRAR: 
+        return {
+         
+          carrito:action.payload
+
+        }
+        case RESTAURAR: 
+        return {
+          ...state,
+          carrito:[]
 
         }
     

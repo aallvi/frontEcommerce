@@ -10,15 +10,16 @@ export const ListarProducto = () => {
         codigo: '',
         foto: '',
         precio: '', 
-        stock: ''
+        stock: '',
+        categoria:''
     })
 
-    const {nombre,descripcion,codigo,foto,precio,stock} = datos
+    const {nombre,descripcion,codigo,foto,precio,stock,categoria} = datos
 
     const agregarProducto = async () => {
 
         const response = await fetch(`${base}/api/productos`,{
-            method: 'POST',headers: { 'Content-Type': 'application/json' } ,body:JSON.stringify({nombre,descripcion,codigo,foto,precio,stock})
+            method: 'POST',headers: { 'Content-Type': 'application/json' } ,body:JSON.stringify({nombre,descripcion,codigo,foto,precio,stock,categoria})
                    
         })
         const data = await response.json()
@@ -31,7 +32,8 @@ export const ListarProducto = () => {
             codigo: '',
             foto: '',
             precio: '', 
-            stock: ''
+            stock: '',
+            categoria:''
         })
 
     }
@@ -40,13 +42,18 @@ export const ListarProducto = () => {
 
 
   return (
-    <div>
+    <div className='contenedor' >
      <p>Agregar un Producto</p>   
         
         
         <div className='camposListarProducto' >
             <p>Nombre</p>
             <input value={nombre} onChange={ e => setDatos({...datos,nombre:e.target.value}) } />
+
+        </div>
+        <div className='camposListarProducto' >
+            <p>categoria</p>
+            <input value={categoria} onChange={ e => setDatos({...datos,categoria:e.target.value}) } />
 
         </div>
         <div className='camposListarProducto' >

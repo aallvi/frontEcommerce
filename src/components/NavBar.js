@@ -5,8 +5,15 @@ import { NavLink } from 'react-router-dom'
 export const NavBar = () => {
 
 
+    // const email = localStorage.getItem('email')
+
+    // console.log(email)
+
+    
+
+
   return (
-    <div>
+    <div className='navBar' >
 
        <li>
         <NavLink
@@ -67,7 +74,7 @@ export const NavBar = () => {
             isActive ? 'activeClassName' : 'BotonNav'
           }
         >
-          perfil 
+          Perfil 
         </NavLink>
         </li>
        <li>
@@ -82,6 +89,46 @@ export const NavBar = () => {
           Ir al carrito 
         </NavLink>
         </li>
+
+      
+          <li>
+          <NavLink
+            to="/ordenes"
+          //   onClick={() => setToggleMenu(false) }
+  
+            className={({ isActive }) =>
+              isActive ? 'activeClassName' : 'BotonNav'
+            }
+          >
+           Mis Ordenes
+          </NavLink>
+          </li>
+          <li>
+          <NavLink
+            to="/categorias"
+          //   onClick={() => setToggleMenu(false) }
+  
+            className={({ isActive }) =>
+              isActive ? 'activeClassName' : 'BotonNav'
+            }
+          >
+          Categorias
+          </NavLink>
+          </li>
+          <li>
+          <NavLink
+            to="/mensajes"
+          //   onClick={() => setToggleMenu(false) }
+  
+            className={({ isActive }) =>
+              isActive ? 'activeClassName' : 'BotonNav'
+            }
+          >
+          Mis Mensajes
+          </NavLink>
+          </li>
+        
+    
 
     </div>
   )

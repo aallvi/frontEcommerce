@@ -8,3 +8,37 @@
     grid-template-columns: repeat(3,1fr);
     gap: 4rem;
 }
+
+
+.chatBox{
+    
+    background-color: rgb(0, 0, 0);
+    width: 50rem;
+    margin: 0 auto;
+    margin-top: 5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(2, 255, 149);
+
+    input{
+        text-align: center;
+        font-size: 1.6rem;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h2{
+        text-align: center;
+    }
+
+    .mensajes {
+        border:1px solid aqua;
+    }
+
+    .inputContainer{
+        background-color: green;
+        width: fit-content;
+        margin: 0 auto;
+    }
+}

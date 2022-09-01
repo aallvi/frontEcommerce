@@ -26,7 +26,7 @@ export const Perfil = () => {
 
       try {
 
-        const response = await axios.get(`${base}/home/${email}`)
+        const response = await axios.get(`${base}/api/auth/home/${email}`)
     
         setDatos(response.data)
         console.log(response.data)
@@ -118,7 +118,7 @@ const subir = async () => {
 
 
   return (
-    <div>
+    <div className='contenedor'>
 
       {
         datos && datos[0] &&
